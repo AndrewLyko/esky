@@ -1,0 +1,8 @@
+.idea
+.vscode
+*.pyc
+.coverage
+*.sqlite3
+
+./envs/.env.db
+./envs/.env

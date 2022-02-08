@@ -1,0 +1,10 @@
+Dockerfile
+README.md
+requirements.txt
+.idea
+.vscode
+*.pyc
+db.sqlite3
+venv
+.git
+.gitignore
