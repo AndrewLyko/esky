@@ -14,13 +14,11 @@ RUN apk update \
     && python -m pip install --upgrade pip \
     && pip install --no-cache-dir pipenv \
     && pipenv install --system \
-    && pipenv install --flake8 \
     && apk del --no-cache .build-deps
 
 COPY . $APP_CODE/
 
 FROM build AS development
-CMD flake8 -v --ignore=E501 --count --output-file=./docs/Flake8/flake8.log
 CMD python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
 
 EXPOSE 8000
