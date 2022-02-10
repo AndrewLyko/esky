@@ -6,3 +6,5 @@
 
 ./envs/.env.db
 ./envs/.env
+bot_test.py
+drivers

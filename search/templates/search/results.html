@@ -1,0 +1,41 @@
+<h1>Results</h1>
+
+<form action="" method="get">
+    <h2>{{ form.errors }}</h2>
+
+
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+
+</form>
+
+<div class="results">
+    Wyniki:
+    <div id="results"></div>
+</div>
+
+<script>
+ const url = '{% url "search:flights_ajax" %}';
+
+    const resultsRef = document.getElementById('results')
+    const getData = async () => {
+        const response = await fetch(url);
+        console.log(response)
+        const data = await response.text();
+
+        resultsRef.innerHTML = resultsRef.innerHTML + data
+
+        return response
+    }
+    const times = setInterval(() => {
+        getData().then(response => {
+            if (response.status === 402){
+                clearInterval(times);
+            }
+        })
+    }, 1000)
+
+    setTimeout(() => {
+        clearInterval(times)
+    }, 10000)
+</script>
